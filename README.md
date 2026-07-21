@@ -1,6 +1,8 @@
-# Project Name
+# odin-weather-app
 
-A brief description of what this project does and its purpose.
+This project is a weather app which displays the weather information in a place
+with the use of Visual Crossing API. Among other concepts, this project would
+feature asynchronous code, api integration, promises, and asych/await.
 
 ## Live Demo
 
@@ -15,7 +17,8 @@ A brief description of what this project does and its purpose.
 - HTML
 - CSS
 - JavaScript
-- [Other technologies]
+- Visual Crossing API
+- Webpack
 
 ## Features
 

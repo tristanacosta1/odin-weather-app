@@ -1,7 +1,7 @@
 {
-    "name": "odin-template-repository",
+    "name": "odin-weather-app",
     "version": "1.0.0",
-    "description": "Reusable Webpack template for JavaScript projects.",
+    "description": "Website that displays weather in a place using Visual Crossing API.",
     "private": true,
     "type": "module",
     "scripts": {
