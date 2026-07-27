@@ -9,14 +9,22 @@
         <div id="icon"></div>
 
         <main id="app">
-            <div id="start-view" class="start-view view">
+            <div id="start-view" class="start-view view hidden">
                 <label for="place-input">How's the weather in</label>
                 <input type="text" id="place-input" name="place" class="place-input" />
                 <button type="button" id="search-button" class="search-button">Search</button>
             </div>
             <div id="weather-view" class="weather-view view">
-                <div class="header"></div>
-                <section class="current"></section>
+                <div class="header">
+                    <span>Parañaque, Metro Manila, Philippines</span>
+                    <span>(Monday, July 27)</span>
+                </div>
+                <section class="current">
+                    <div class="temp">16&deg;C</div>
+                    <div class="condition">Sunny</div>
+                    <div class="wind">2.4km/h</div>
+                    <div class="humidity">70%</div>
+                </section>
                 <section class="daily"></section>
                 <sectoin class="hourly"></sectoin>
             </div>
