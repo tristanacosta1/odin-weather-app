@@ -1,19 +1,19 @@
 @font-face {
-    font-family: "";
+    font-family: "Roboto Serif";
     src:
-        url("./fonts/") format("woff2"),
-        url("./fonts/") format("woff");
+        url("../assets/fonts/RobotoSerif-20ptRegular.woff2") format("woff2"),
+        url("../assets/fonts/RobotoSerif-20ptRegular.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "";
+    font-family: "Roboto";
     src:
-        url("./") format("woff2"),
-        url("./") format("woff");
-    font-weight: 200;
+        url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"),
+        url("../assets/fonts/RobotoMono-Regular.woff") format("woff");
+    font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
@@ -29,6 +29,13 @@
 :root {
 }
 
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
 #start-page {
     display: flex;
     flex-direction: column;
@@ -36,14 +43,23 @@
     height: 100vh;
     justify-content: center;
     background: #092238;
+    font-family: "Roboto Serif";
+}
+
+#start-page label {
+    color: white;
 }
 
 #bg svg {
     height: 500px;
     width: 500px;
-    transform: translateY(-50px);
+    transform: translateY(-20px);
 }
 
 #bg path {
     fill: #9ecfde;
+}
+
+#place {
+    margin: 10px 0;
 }
