@@ -6,11 +6,15 @@
         <title>Weather App</title>
     </head>
     <body>
-        <div id="start-page">
-            <div id="bg"></div>
-            <label for="place">How's the weather in</label>
-            <input type="text" id="place" name="place" />
-            <button type="button">Search</button>
-        </div>
+        <div id="icon"></div>
+
+        <main id="app">
+            <div id="start-view" class="start-view view">
+                <label for="place-input">How's the weather in</label>
+                <input type="text" id="place-input" name="place" class="place-input" />
+                <button type="button" id="search-button" class="search-button">Search</button>
+            </div>
+            <div id="weather-view" class="weather-view view"></div>
+        </main>
     </body>
 </html>
