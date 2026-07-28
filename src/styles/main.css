@@ -98,6 +98,10 @@ body {
     display: block;
 }
 
+.icon path {
+    fill: #9ecfde;
+}
+
 .sub-details {
     padding-top: 30px;
 }
@@ -146,6 +150,33 @@ body {
     border: 1px solid white;
     padding: 3rem 1.5rem;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.day {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    gap: 12px;
+}
+
+.day-icon {
+    align-self: center;
+}
+
+.day-icon svg {
+    height: 40px;
+    width: 40px;
+}
+
+.day .text {
+    align-self: center;
+}
+
+.day .text > :first-child {
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .hourly {
