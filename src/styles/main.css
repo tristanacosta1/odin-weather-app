@@ -19,13 +19,6 @@
 :root {
 }
 
-input,
-button,
-textarea,
-select {
-    font: inherit;
-}
-
 body {
     position: relative;
     background: #092238;
@@ -49,8 +42,54 @@ body {
     fill: #9ecfde;
 }
 
-.place-input {
+.start-view {
+    position: relative;
+}
+
+.start-view label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+}
+
+.start-view div {
+    display: flex;
+    align-items: center;
+}
+
+.start-view div button {
+    position: absolute;
+    left: 64%;
+}
+
+#place-input {
     margin: 10px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    background: #0b2943;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    color: #fafdfd;
+    padding: 12px 16px;
+}
+
+#search-button {
+    font-family: "Montserrat", sans-serif;
+    border-radius: 4px;
+    background-color: #9ecfde;
+    color: #092238;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: ease 0.3s;
+}
+
+#search-button:hover {
+    background-color: #adeafd;
+}
+
+#search-button:active {
+    background-color: #cbf3ff;
 }
 
 .view {
