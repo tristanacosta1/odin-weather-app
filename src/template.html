@@ -6,7 +6,7 @@
         <title>Weather App</title>
     </head>
     <body>
-        <div id="icon"></div>
+        <div id="bg"></div>
 
         <main id="app">
             <div id="start-view" class="start-view view hidden">
@@ -15,16 +15,30 @@
                 <button type="button" id="search-button" class="search-button">Search</button>
             </div>
             <div id="weather-view" class="weather-view view">
+                <section class="current">
+                    <div class="temp">16&deg;C</div>
+                    <div class="condition">Sunny</div>
+                    <div class="details">
+                        <div class="sub-details">
+                            <div>
+                                <div id="wind" class="icon"></div>
+                                <div class="text">Wind</div>
+                            </div>
+                            <div class="value">2.4km/h</div>
+                        </div>
+                        <div class="sub-details">
+                            <div>
+                                <div id="humidity" class="icon"></div>
+                                <div class="text">Humidity</div>
+                            </div>
+                            <div class="value">70%</div>
+                        </div>
+                    </div>
+                </section>
                 <div class="header">
                     <span>Parañaque, Metro Manila, Philippines</span>
                     <span>(Monday, July 27)</span>
                 </div>
-                <section class="current">
-                    <div class="temp">16&deg;C</div>
-                    <div class="condition">Sunny</div>
-                    <div class="wind">2.4km/h</div>
-                    <div class="humidity">70%</div>
-                </section>
                 <section class="daily"></section>
                 <sectoin class="hourly"></sectoin>
             </div>

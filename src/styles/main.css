@@ -1,19 +1,9 @@
 @font-face {
-    font-family: "Roboto Serif";
+    font-family: "Montserrat";
     src:
-        url("../assets/fonts/RobotoSerif-20ptRegular.woff2") format("woff2"),
-        url("../assets/fonts/RobotoSerif-20ptRegular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Roboto";
-    src:
-        url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"),
-        url("../assets/fonts/RobotoMono-Regular.woff") format("woff");
-    font-weight: normal;
+        url("../assets/fonts/Montserrat-VariableFont_wght.woff2") format("woff2"),
+        url("../assets/fonts/Montserrat-VariableFont_wght.woff") format("woff");
+    font-weight: 100 900;
     font-style: normal;
     font-display: swap;
 }
@@ -41,21 +31,29 @@ body {
     background: #092238;
 }
 
-#icon {
+#bg {
     position: absolute;
     left: 50%;
     top: 125px;
     transform: translateX(-50%);
 }
 
-#icon svg {
+#bg svg {
     height: 500px;
     width: 500px;
     transform: translateY(-20px);
 }
 
-#icon path {
+#bg path {
     fill: #9ecfde;
+}
+
+.place-input {
+    margin: 10px 0;
+}
+
+.view {
+    color: white;
 }
 
 .start-view {
@@ -68,12 +66,63 @@ body {
     font-family: "Roboto Serif";
 }
 
-.view {
-    color: white;
+.weather-view {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 3fr 1fr;
 }
 
-.place-input {
-    margin: 10px 0;
+.current {
+    justify-self: center;
+    font-family: "Montserrat";
+    padding-top: 125px;
+    width: 70%;
+}
+
+.temp {
+    font-size: 6rem;
+    font-weight: 400;
+}
+
+.condition {
+    font-size: 2.5rem;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.sub-details {
+    padding-top: 30px;
+}
+
+.sub-details > :first-child {
+    display: flex;
+    align-items: center;
+}
+
+.sub-details .icon svg {
+    height: 20px;
+    width: 20px;
+}
+
+.text {
+    font-size: 0.75rem;
+}
+
+.value {
+    font-family: "Montserrat" sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.wind-icon {
+}
+
+.hourly {
+    grid-column: span 3;
 }
 
 .hidden {
