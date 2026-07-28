@@ -29,6 +29,7 @@ select {
 body {
     position: relative;
     background: #092238;
+    font-family: "Montserrat", sans-serif;
 }
 
 #bg {
@@ -75,7 +76,6 @@ body {
 
 .current {
     justify-self: center;
-    font-family: "Montserrat";
     padding-top: 125px;
     width: 70%;
 }
@@ -94,6 +94,10 @@ body {
     grid-template-columns: 1fr 1fr;
 }
 
+.icon svg {
+    display: block;
+}
+
 .sub-details {
     padding-top: 30px;
 }
@@ -101,6 +105,8 @@ body {
 .sub-details > :first-child {
     display: flex;
     align-items: center;
+    gap: 4px;
+    padding-bottom: 4px;
 }
 
 .sub-details .icon svg {
@@ -113,12 +119,22 @@ body {
 }
 
 .value {
-    font-family: "Montserrat" sans-serif;
     font-weight: 400;
     font-size: 1.5rem;
 }
 
-.wind-icon {
+.header {
+    justify-self: center;
+    padding-top: 30px;
+    font-size: 0.99rem;
+    display: flex;
+    height: max-content;
+    align-items: center;
+    gap: 4px;
+}
+
+.header .place {
+    font-weight: 700;
 }
 
 .hourly {
