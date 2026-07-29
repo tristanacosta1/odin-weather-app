@@ -180,6 +180,10 @@ body {
     font-weight: 700;
 }
 
+.header .icon svg {
+    cursor: pointer;
+}
+
 .daily {
     justify-self: right;
     margin-right: 80px;
@@ -263,6 +267,51 @@ body {
 
 .hour .time {
     font-size: 0.75rem;
+}
+
+#search-view {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    height: 100vh;
+}
+
+#search-view[open] {
+}
+
+#search-view div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+#search-view::backdrop {
+    background: rgb(0 0 0 / 50%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+#search-view label {
+    font-family: "Montserrat", sans-serif;
+    color: #fafdfd;
+    font-size: 7rem;
+    width: fit-content;
+}
+
+#search-view input {
+    font-family: "Montserrat", sans-serif;
+    color: #fafdfd;
+    font-size: 7rem;
+    width: auto;
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 80%;
+    align-self: flex-start;
+    margin-left: 110px;
 }
 
 .hidden {

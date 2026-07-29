@@ -9,6 +9,7 @@ const wind = document.getElementById("wind");
 const humidity = document.getElementById("humidity");
 const location = document.getElementById("location");
 const dayIcons = document.querySelectorAll(".day-icon");
+const searchView = document.getElementById("search-view");
 
 const icons = {
     bg: Sunny,
@@ -25,3 +26,5 @@ location.innerHTML = icons.location;
 dayIcons.forEach((day) => {
     day.innerHTML = icons.bg;
 });
+
+location.addEventListener("click", () => searchView.showModal());

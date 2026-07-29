@@ -9,14 +9,14 @@
         <div id="bg"></div>
 
         <main id="app">
-            <div id="start-view" class="start-view view">
+            <div id="start-view" class="start-view view hidden">
                 <label for="place-input">How's the weather in</label>
                 <div>
                     <input type="text" id="place-input" name="place" />
                     <button type="button" id="search-button">Search</button>
                 </div>
             </div>
-            <div id="weather-view" class="weather-view view hidden">
+            <div id="weather-view" class="weather-view view">
                 <section class="current">
                     <div class="temp">16&deg;C</div>
                     <div class="condition">Sunny</div>
@@ -160,6 +160,12 @@
                     </div>
                 </section>
             </div>
+            <dialog id="search-view">
+                <div>
+                    <label for="search">How's the weather in</label>
+                    <input type="text" id="search" />
+                </div>
+            </dialog>
         </main>
     </body>
 </html>
