@@ -1,4 +1,5 @@
 import "./styles/main.css";
+import { getWeather } from "./api/weather.js";
 import Sunny from "./assets/icons/sunny.svg?raw";
 import Wind from "./assets/icons/wind.svg?raw";
 import Humidity from "./assets/icons/humidity.svg?raw";
