@@ -1,10 +1,8 @@
+import { getWeather } from "../api/weather.js";
+
 export function searchWeather() {
     const placeIn = document.getElementById("place-input");
     const searchBtn = document.getElementById("search-button");
-
-    if (!placeIn.checkValidity()) {
-        placeIn.reportValidity();
-    }
 
     placeIn.addEventListener("input", () => {
         if (isOnlyWhitespace(placeIn.value)) {
@@ -19,6 +17,7 @@ export function searchWeather() {
             placeIn.reportValidity();
         } else {
             const cleanPlace = placeIn.value.trim();
+            getWeather(cleanPlace);
         }
     });
 }

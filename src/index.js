@@ -1,5 +1,6 @@
 import "./styles/main.css";
 import { getWeather } from "./api/weather.js";
+import { searchWeather } from "./ui/domController.js";
 import Sunny from "./assets/icons/sunny.svg?raw";
 import Wind from "./assets/icons/wind.svg?raw";
 import Humidity from "./assets/icons/humidity.svg?raw";
@@ -29,3 +30,5 @@ dayIcons.forEach((day) => {
 });
 
 location.addEventListener("click", () => searchView.showModal());
+
+searchWeather();

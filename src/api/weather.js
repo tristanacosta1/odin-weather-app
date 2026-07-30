@@ -13,5 +13,3 @@ export async function getWeather(location) {
         console.error(error.message);
     }
 }
-
-getWeather("Metro Manila");
