@@ -178,6 +178,7 @@ body {
 
 .header .place {
     font-weight: 700;
+    padding-right: 25px;
 }
 
 .header .icon svg {

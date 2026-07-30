@@ -1,4 +1,5 @@
 import { getWeather } from "../api/weather.js";
+import { isOnlyWhitespace } from "../utils/validation.js";
 
 export function searchWeather() {
     const placeIn = document.getElementById("place-input");
@@ -20,8 +21,4 @@ export function searchWeather() {
             getWeather(cleanPlace);
         }
     });
-}
-
-function isOnlyWhitespace(location) {
-    return location.trim() === "" && location.length > 0;
 }
