@@ -19,6 +19,20 @@ export function createWeatherModel(weatherData) {
 
     const humidity = weatherData.currentConditions.humidity;
 
+    function extractDay(dayDay) {
+        const d = new Date(dayDay.datetime);
+        const day = d.toLocaleDateString("en-US", {
+            weekday: "long",
+        });
+        const condition = dayDay.conditions;
+        const temp = Math.round(dayDay.temp);
+
+        return {
+            day,
+            condition,
+            temp,
+        };
+    }
 
     return {
         header: {
@@ -32,6 +46,7 @@ export function createWeatherModel(weatherData) {
             wind,
             humidity,
         },
-        daily: ,
+        daily: weatherData.days.slice(0, 7).map(extractDay),
+        hourly:
     };
 }
