@@ -1,4 +1,5 @@
 export function createWeatherModel(weatherData) {
+    let us = true;
     const date = weatherData.days[0].datetime;
     const d = new Date(date);
     const currHour = Number([weatherData.currentConditions.datetime.slice(0, 2)]);
@@ -12,13 +13,19 @@ export function createWeatherModel(weatherData) {
         weekday: "long",
     });
 
-    const temp = Math.round(weatherData.currentConditions.temp) + "\u00B0" + "C";
+    function extractCurrent(deg = "C", spd = "km/h") {
+        const temp = Math.round(weatherData.currentConditions.temp) + "\u00B0" + deg;
+        const condition = weatherData.currentConditions.conditions;
+        const wind = weatherData.currentConditions.windspeed + spd;
+        const humidity = weatherData.currentConditions.humidity + "%";
 
-    const condition = weatherData.currentConditions.conditions;
-
-    const wind = weatherData.currentConditions.windspeed;
-
-    const humidity = weatherData.currentConditions.humidity + "%";
+        return {
+            temp,
+            condition,
+            wind,
+            humidity,
+        };
+    }
 
     function extractDay(dayDay) {
         const d = new Date(dayDay.datetime);
@@ -51,12 +58,7 @@ export function createWeatherModel(weatherData) {
             date: formatDate,
             day,
         },
-        current: {
-            temp,
-            condition,
-            wind,
-            humidity,
-        },
+        current: us ? extractCurrent("F", "mph") : extractCurrent(),
         daily: weatherData.days.slice(0, 7).map(extractDay),
         hourly: weatherData.days[0].hours.slice(currHour - 1, currHour + 7).map(extractHour),
     };
