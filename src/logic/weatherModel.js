@@ -34,6 +34,16 @@ export function createWeatherModel(weatherData) {
         };
     }
 
+    function extractHour(hour) {
+        const time = hour.datetime.slice(0, 5);
+        const temp = Math.round(hour.temp);
+
+        return {
+            time,
+            temp,
+        };
+    }
+
     return {
         header: {
             city: weatherData.address,
@@ -47,6 +57,8 @@ export function createWeatherModel(weatherData) {
             humidity,
         },
         daily: weatherData.days.slice(0, 7).map(extractDay),
-        hourly:
+        hourly: weatherData.days[0].hours
+            .slice([weatherData.currentConditions.datetime[1]] - 1, 8)
+            .map(extractHour),
     };
 }
