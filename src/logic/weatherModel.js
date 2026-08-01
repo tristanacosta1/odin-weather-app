@@ -1,5 +1,5 @@
 export function createWeatherModel(weatherData) {
-    let us = true;
+    let us = false;
     const date = weatherData.days[0].datetime;
     const d = new Date(date);
     const currHour = Number([weatherData.currentConditions.datetime.slice(0, 2)]);

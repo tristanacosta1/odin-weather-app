@@ -6,6 +6,8 @@ const weatherView = document.getElementById("weather-view");
 const currTemp = document.querySelector(".current .temp");
 const currCond = document.querySelector(".current .condition");
 const details = document.querySelectorAll(".details .value");
+const place = document.getElementById("place");
+const date = document.getElementById("date");
 
 let cleanData;
 
@@ -31,6 +33,7 @@ export function searchWeather() {
             startView.classList.add("hidden");
             weatherView.classList.remove("hidden");
             displayCurrent(cleanData.current);
+            displayHeader(cleanData.header);
         }
     });
 }
@@ -40,4 +43,9 @@ function displayCurrent(data) {
     currCond.textContent = data.condition;
     details[0].textContent = data.wind;
     details[1].textContent = data.humidity;
+}
+
+function displayHeader(data) {
+    place.textContent = data.city;
+    date.textContent = `(${data.day}, ${data.date})`;
 }
