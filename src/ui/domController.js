@@ -4,7 +4,7 @@ import { toggleUs } from "../logic/weatherModel.js";
 import clearDay from "../assets/icons/clear-day.svg?raw";
 import clearNight from "../assets/icons/clear-night.svg?raw";
 import cloudy from "../assets/icons/cloudy.svg?raw";
-import partlyCloudy from "../assets/icons/partly-cloudy.svg?raw";
+import partlyCloudyDay from "../assets/icons/partly-cloudy-day.svg?raw";
 import partlyCloudNight from "../assets/icons/partly-cloudy-night.svg?raw";
 import rain from "../assets/icons/rain.svg?raw";
 import fog from "../assets/icons/fog.svg?raw";
@@ -25,6 +25,7 @@ const details = document.querySelectorAll(".details .value");
 const place = document.getElementById("place");
 const date = document.getElementById("date");
 const days = document.querySelectorAll(".day");
+const hours = document.querySelectorAll(".hour");
 const searchView = document.getElementById("search-view");
 
 const icons = {
@@ -34,7 +35,7 @@ const icons = {
     conditions: {
         "clear-day": clearDay,
         "clear-night": clearNight,
-        "partly-cloudy": partlyCloudy,
+        "partly-cloudy-day": partlyCloudyDay,
         "partly-cloudy-night": partlyCloudNight,
         cloudy: cloudy,
         fog: fog,
@@ -44,7 +45,9 @@ const icons = {
     },
 };
 
-let cleanData;
+let metricData;
+let usData;
+let place;
 
 export function initialize() {
     bg.innerHTML = icons.conditions["clear-day"];
@@ -71,15 +74,16 @@ export function searchWeather() {
         if (!placeIn.checkValidity()) {
             placeIn.reportValidity();
         } else {
-            const cleanPlace = placeIn.value.trim();
-            cleanData = await getWeather(cleanPlace);
-            console.log(cleanData);
+            place = placeIn.value.trim();
+            metricData = await getWeather(place);
+            console.log("Clean weather data: ", metricData);
             startView.classList.add("hidden");
             weatherView.classList.remove("hidden");
-            displayCurrent(cleanData.current);
-            displayHeader(cleanData.header);
-            displayDaily(cleanData.daily);
-            setCurrIcon(cleanData.current.icon);
+            displayCurrent(metricData.current);
+            displayHeader(metricData.header);
+            displayDaily(metricData.daily);
+            displayHourly(metricData.hourly);
+            setCurrIcon(metricData.current.icon);
         }
     });
 }
@@ -105,7 +109,13 @@ function displayDaily(data) {
         day.querySelector(".dotw").textContent = data[index].day;
         day.querySelector(".condition").textContent = data[index].condition;
         day.querySelector(".temp").textContent = data[index].temp;
+        day.querySelector(".icon").innerHTML = icons.conditions[data[index].icon];
     });
 }
 
-const dayIcons = document.querySelectorAll(".day-icon");
+function displayHourly(data) {
+    hours.forEach((hour, index) => {
+        hour.querySelector(".temp").textContent = data[index].temp;
+        hour.querySelector(".time").textContent = data[index].time;
+    });
+}

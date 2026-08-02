@@ -30,13 +30,13 @@ export function createWeatherModel(weatherData) {
         };
     }
 
-    function extractDay(dayDay, deg = "C") {
+    function extractDay(dayDay) {
         const d = new Date(dayDay.datetime);
         const day = d.toLocaleDateString("en-US", {
             weekday: "long",
         });
         const condition = dayDay.conditions;
-        const temp = Math.round(dayDay.temp) + "\u00B0" + deg;
+        const temp = Math.round(dayDay.temp) + "\u00B0";
         const icon = dayDay.icon;
 
         return {
@@ -49,7 +49,7 @@ export function createWeatherModel(weatherData) {
 
     function extractHour(hour) {
         const time = hour.datetime.slice(0, 5);
-        const temp = Math.round(hour.temp);
+        const temp = Math.round(hour.temp) + "\u00B0";
 
         return {
             time,
@@ -64,9 +64,7 @@ export function createWeatherModel(weatherData) {
             day,
         },
         current: us ? extractCurrent("F", "mph") : extractCurrent(),
-        daily: weatherData.days
-            .slice(0, 7)
-            .map((dayData) => (us ? extractDay(dayData, "F") : extractDay(dayData))),
+        daily: weatherData.days.slice(0, 7).map(extractDay),
         hourly: weatherData.days[0].hours.slice(currHour - 1, currHour + 7).map(extractHour),
     };
 }

@@ -119,9 +119,13 @@ body {
     width: 70%;
 }
 
-.temp {
+.current .temp {
     font-size: 6rem;
     font-weight: 400;
+}
+
+.current .temp:hover {
+    cursor: pointer;
 }
 
 .condition {
