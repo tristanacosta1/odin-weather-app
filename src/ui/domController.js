@@ -8,6 +8,7 @@ const currCond = document.querySelector(".current .condition");
 const details = document.querySelectorAll(".details .value");
 const place = document.getElementById("place");
 const date = document.getElementById("date");
+const days = document.querySelectorAll(".day");
 
 let cleanData;
 
@@ -34,6 +35,7 @@ export function searchWeather() {
             weatherView.classList.remove("hidden");
             displayCurrent(cleanData.current);
             displayHeader(cleanData.header);
+            displayDaily(cleanData.daily);
         }
     });
 }
@@ -48,4 +50,12 @@ function displayCurrent(data) {
 function displayHeader(data) {
     place.textContent = data.city;
     date.textContent = `(${data.day}, ${data.date})`;
+}
+
+function displayDaily(data) {
+    days.forEach((day, index) => {
+        day.querySelector(".dotw").textContent = data[index].day;
+        day.querySelector(".condition").textContent = data[index].condition;
+        day.querySelector(".temp").textContent = data[index].temp;
+    });
 }

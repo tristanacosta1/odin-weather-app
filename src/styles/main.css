@@ -218,9 +218,17 @@ body {
     align-self: center;
 }
 
-.day .text > :first-child {
+.day .dotw {
     font-size: 1rem;
     font-weight: 700;
+}
+
+.day .condition {
+    font-size: 0.75rem;
+}
+
+.day .temp {
+    font-size: 1rem;
 }
 
 .hourly {
