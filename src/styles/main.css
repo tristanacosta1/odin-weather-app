@@ -189,7 +189,7 @@ body {
     justify-self: right;
     margin-right: 80px;
     margin-top: 125px;
-    width: 50%;
+    width: 55%;
     height: max-content;
     border: 1px solid #fafdfd;
     padding: 2rem 1.5rem;
@@ -229,6 +229,7 @@ body {
 
 .day .temp {
     font-size: 1rem;
+    justify-self: flex-end;
 }
 
 .hourly {

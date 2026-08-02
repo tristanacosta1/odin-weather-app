@@ -1,5 +1,6 @@
+let us = false;
+
 export function createWeatherModel(weatherData) {
-    let us = false;
     const date = weatherData.days[0].datetime;
     const d = new Date(date);
     const currHour = Number([weatherData.currentConditions.datetime.slice(0, 2)]);
@@ -27,13 +28,13 @@ export function createWeatherModel(weatherData) {
         };
     }
 
-    function extractDay(dayDay) {
+    function extractDay(dayDay, deg = "C") {
         const d = new Date(dayDay.datetime);
         const day = d.toLocaleDateString("en-US", {
             weekday: "long",
         });
         const condition = dayDay.conditions;
-        const temp = Math.round(dayDay.temp);
+        const temp = Math.round(dayDay.temp) + "\u00B0" + deg;
 
         return {
             day,
@@ -59,7 +60,13 @@ export function createWeatherModel(weatherData) {
             day,
         },
         current: us ? extractCurrent("F", "mph") : extractCurrent(),
-        daily: weatherData.days.slice(0, 7).map(extractDay),
+        daily: weatherData.days
+            .slice(0, 7)
+            .map((dayData) => (us ? extractDay(dayData, "F") : extractDay(dayData))),
         hourly: weatherData.days[0].hours.slice(currHour - 1, currHour + 7).map(extractHour),
     };
+}
+
+export function toggleUs() {
+    us ? (us = false) : (us = true);
 }

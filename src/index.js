@@ -1,34 +1,6 @@
 import "./styles/main.css";
-import { getWeather } from "./api/weather.js";
+import { initialize } from "./ui/domController.js";
 import { searchWeather } from "./ui/domController.js";
-import Sunny from "./assets/icons/sunny.svg?raw";
-import Wind from "./assets/icons/wind.svg?raw";
-import Humidity from "./assets/icons/humidity.svg?raw";
-import Location from "./assets/icons/location.svg?raw";
 
-const bg = document.getElementById("bg");
-const wind = document.getElementById("wind");
-const humidity = document.getElementById("humidity");
-const location = document.getElementById("location");
-const dayIcons = document.querySelectorAll(".day-icon");
-const searchView = document.getElementById("search-view");
-
-const icons = {
-    bg: Sunny,
-    wind: Wind,
-    humidity: Humidity,
-    location: Location,
-};
-
-bg.innerHTML = icons.bg;
-wind.innerHTML = icons.wind;
-humidity.innerHTML = icons.humidity;
-location.innerHTML = icons.location;
-
-dayIcons.forEach((day) => {
-    day.innerHTML = icons.bg;
-});
-
-location.addEventListener("click", () => searchView.showModal());
-
+initialize();
 searchWeather();
