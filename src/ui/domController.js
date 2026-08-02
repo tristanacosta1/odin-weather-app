@@ -1,20 +1,22 @@
 import { getWeather } from "../api/weather.js";
 import { isOnlyWhitespace } from "../utils/validation.js";
 import { toggleUs } from "../logic/weatherModel.js";
-import Sunny from "../assets/icons/sunny.svg?raw";
-import Moonny from "../assets/icons/moonny.svg?raw";
-import PartlyCloudy from "../assets/icons/partly-cloudy.svg?raw";
-import PartlyCloudNight from "../assets/icons/partly-cloudy-night.svg?raw";
-import Rainy from "../assets/icons/rainy.svg?raw";
-import Thunderstorm from "../assets/icons/thunderstorm.svg?raw";
-import Wind from "../assets/icons/wind.svg?raw";
-import Humidity from "../assets/icons/humidity.svg?raw";
-import Location from "../assets/icons/location.svg?raw";
+import clearDay from "../assets/icons/clear-day.svg?raw";
+import clearNight from "../assets/icons/clear-night.svg?raw";
+import cloudy from "../assets/icons/cloudy.svg?raw";
+import partlyCloudy from "../assets/icons/partly-cloudy.svg?raw";
+import partlyCloudNight from "../assets/icons/partly-cloudy-night.svg?raw";
+import rain from "../assets/icons/rain.svg?raw";
+import fog from "../assets/icons/fog.svg?raw";
+import snow from "../assets/icons/snow.svg?raw";
+import wind from "../assets/icons/wind.svg?raw";
+import humidity from "../assets/icons/humidity.svg?raw";
+import location from "../assets/icons/location.svg?raw";
 
 const bg = document.getElementById("bg");
-const wind = document.getElementById("wind");
-const humidity = document.getElementById("humidity");
-const location = document.getElementById("location");
+const windIcon = document.getElementById("wind");
+const humidityIcon = document.getElementById("humidity");
+const locationIcon = document.getElementById("location");
 const startView = document.getElementById("start-view");
 const weatherView = document.getElementById("weather-view");
 const currTemp = document.querySelector(".current .temp");
@@ -26,15 +28,20 @@ const days = document.querySelectorAll(".day");
 const searchView = document.getElementById("search-view");
 
 const icons = {
-    sunny: Sunny,
-    moonny: Moonny,
-    partlyCloudy: PartlyCloudy,
-    partlyCloudyNight: PartlyCloudNight,
-    rainy: Rainy,
-    thunderstorm: Thunderstorm,
-    wind: Wind,
-    humidity: Humidity,
-    location: Location,
+    wind,
+    humidity,
+    location,
+    conditions: {
+        "clear-day": clearDay,
+        "clear-night": clearNight,
+        "partly-cloudy": partlyCloudy,
+        "partly-cloudy-night": partlyCloudNight,
+        cloudy: cloudy,
+        fog: fog,
+        rain: rain,
+        snow: snow,
+        wind: wind,
+    },
 };
 
 let cleanData;
@@ -72,6 +79,7 @@ export function searchWeather() {
             displayCurrent(cleanData.current);
             displayHeader(cleanData.header);
             displayDaily(cleanData.daily);
+            setCurrIcon(cleanData.current.condition);
         }
     });
 }
