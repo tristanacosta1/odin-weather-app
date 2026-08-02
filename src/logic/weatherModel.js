@@ -19,12 +19,14 @@ export function createWeatherModel(weatherData) {
         const condition = weatherData.currentConditions.conditions;
         const wind = weatherData.currentConditions.windspeed + spd;
         const humidity = weatherData.currentConditions.humidity + "%";
+        const icon = weatherData.currentConditions.icon;
 
         return {
             temp,
             condition,
             wind,
             humidity,
+            icon,
         };
     }
 
@@ -35,11 +37,13 @@ export function createWeatherModel(weatherData) {
         });
         const condition = dayDay.conditions;
         const temp = Math.round(dayDay.temp) + "\u00B0" + deg;
+        const icon = dayDay.icon;
 
         return {
             day,
             condition,
             temp,
+            icon,
         };
     }
 

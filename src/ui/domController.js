@@ -47,12 +47,12 @@ const icons = {
 let cleanData;
 
 export function initialize() {
-    bg.innerHTML = icons.sunny;
-    wind.innerHTML = icons.wind;
-    humidity.innerHTML = icons.humidity;
-    location.innerHTML = icons.location;
+    bg.innerHTML = icons.conditions["clear-day"];
+    windIcon.innerHTML = icons.wind;
+    humidityIcon.innerHTML = icons.humidity;
+    locationIcon.innerHTML = icons.location;
     currTemp.addEventListener("click", toggleUs);
-    location.addEventListener("click", () => searchView.showModal());
+    locationIcon.addEventListener("click", () => searchView.showModal());
 }
 
 export function searchWeather() {
@@ -79,12 +79,14 @@ export function searchWeather() {
             displayCurrent(cleanData.current);
             displayHeader(cleanData.header);
             displayDaily(cleanData.daily);
-            setCurrIcon(cleanData.current.condition);
+            setCurrIcon(cleanData.current.icon);
         }
     });
 }
 
-function setCurrIcon() {}
+function setCurrIcon(condition) {
+    bg.innerHTML = icons.conditions[condition];
+}
 
 function displayCurrent(data) {
     currTemp.textContent = data.temp;

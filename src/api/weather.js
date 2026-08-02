@@ -10,6 +10,7 @@ export async function getWeather(location) {
         }
 
         const weatherData = await response.json();
+        console.log(weatherData);
         return createWeatherModel(weatherData);
     } catch (error) {
         console.error(error.message);
