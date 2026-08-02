@@ -1,4 +1,8 @@
+import { getWeather } from "../api/weather.js";
+
 let us = false;
+let metricData;
+let usData;
 
 export function createWeatherModel(weatherData) {
     const date = weatherData.days[0].datetime;
@@ -57,7 +61,7 @@ export function createWeatherModel(weatherData) {
         };
     }
 
-    return {
+    const weather = {
         header: {
             city: weatherData.address,
             date: formatDate,
@@ -67,8 +71,28 @@ export function createWeatherModel(weatherData) {
         daily: weatherData.days.slice(0, 7).map(extractDay),
         hourly: weatherData.days[0].hours.slice(currHour - 1, currHour + 7).map(extractHour),
     };
+
+    if (metricData) {
+        usData = weather;
+    } else {
+        metricData = weather;
+    }
+
+    return weather;
 }
 
-export function toggleUs() {
-    us ? (us = false) : (us = true);
+export async function toggleUs(place) {
+    console.log("Hello");
+    if (us) {
+        us = false;
+        return metricData;
+    } else {
+        us = true;
+        if (usData) {
+            return usData;
+        } else {
+            await getWeather(place, "us");
+            return usData;
+        }
+    }
 }

@@ -45,16 +45,23 @@ const icons = {
     },
 };
 
-let metricData;
-let usData;
-let place;
+let city;
+let weatherData;
 
 export function initialize() {
     bg.innerHTML = icons.conditions["clear-day"];
     windIcon.innerHTML = icons.wind;
     humidityIcon.innerHTML = icons.humidity;
     locationIcon.innerHTML = icons.location;
-    currTemp.addEventListener("click", toggleUs);
+    currTemp.addEventListener("click", async () => {
+        weatherData = await toggleUs(city);
+        console.log("Clean weather data: ", weatherData);
+        displayCurrent(weatherData.current);
+        displayHeader(weatherData.header);
+        displayDaily(weatherData.daily);
+        displayHourly(weatherData.hourly);
+        setCurrIcon(weatherData.current.icon);
+    });
     locationIcon.addEventListener("click", () => searchView.showModal());
 }
 
@@ -74,16 +81,16 @@ export function searchWeather() {
         if (!placeIn.checkValidity()) {
             placeIn.reportValidity();
         } else {
-            place = placeIn.value.trim();
-            metricData = await getWeather(place);
-            console.log("Clean weather data: ", metricData);
+            city = placeIn.value.trim();
+            weatherData = await getWeather(city);
+            console.log("Clean weather data: ", weatherData);
             startView.classList.add("hidden");
             weatherView.classList.remove("hidden");
-            displayCurrent(metricData.current);
-            displayHeader(metricData.header);
-            displayDaily(metricData.daily);
-            displayHourly(metricData.hourly);
-            setCurrIcon(metricData.current.icon);
+            displayCurrent(weatherData.current);
+            displayHeader(weatherData.header);
+            displayDaily(weatherData.daily);
+            displayHourly(weatherData.hourly);
+            setCurrIcon(weatherData.current.icon);
         }
     });
 }
